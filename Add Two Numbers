@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        //如果input无效--->return null；
+    if(l1 == null && l2 == null){return null;}
+    int addOne = 0;
+    //设置进一变量
+    ListNode ans = new ListNode(0);
+    //创建新的ListNode并且assign为null
+    //head指向ans，可移动指向下一node
+    ListNode head = ans;
+    while( l1 != null || l2 != null || addOne != 0){
+      //前提并没有说两个linkedlist的长度相等，因此需要排除当其中的链表走到底的情况，如此情况发生则值变为0；
+      int val1 = l1==null ? 0: l1.val;
+      int val2 = l2==null ? 0: l2.val;
+      //一定记住要加上addOne，因为addOne是在loop最后声明的，所以不必担心最后的数值多添加了1
+      int sum = val1 + val2 + addOne;
+      //因为每一个node只提取个位数所以用%10来提取
+      head.next = new ListNode(sum%10);
+      //进入下一个node
+      head = head.next;
+      //定义addOne， 虽然最高只会是1，但是还是需要重新设置，以免进位叠加
+      addOne = sum / 10;
+      //比较下一个node
+      if(l1 != null) l1 = l1.next;
+      if(l2 != null) l2 = l2.next;
+   
+
+    }
+    return ans.next;
+    }
+}
