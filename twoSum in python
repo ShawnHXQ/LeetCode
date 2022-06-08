@@ -1,0 +1,20 @@
+class Solution(object):
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        #create a dictionary 
+        hm ={}
+        
+        #make list be enumerate that contain the count and value(element)
+        for i,value in enumerate(nums):
+            #set the remainder
+            a = target- nums[i]
+            
+            #if we have the match remainder value in dictionary, return the count and index of remainder
+            if a in hm:
+                return [i, hm.get(a)]
+            #assign the key and element in dictionary
+            hm[value] = i 
