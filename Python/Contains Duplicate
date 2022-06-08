@@ -1,0 +1,19 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+       
+        #if is large array, the runtime may exceed  if we use the loop 
+    
+        for i in nums:
+            if count(i)>1:
+                return True
+        return False
+         """
+        nums2=set(nums)
+        #set 会自动删掉重复的element in array
+        if len(nums2) < len(nums):
+        #如果长度少于原来的array的话，那就说明至少有一个重复了 return True
+            return True
+        return False 
